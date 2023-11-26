@@ -1,0 +1,118 @@
+﻿@model List<HomeworkAspNet3Task4.Models.Appliance>
+
+@{
+	ViewData["Title"] = "Home Page";
+}
+
+<div class="actions">
+	<div>
+		<input type="checkbox" id="showDescription" name="scales"/>
+		<label for="scales">Show Description</label>
+	</div>
+	<div>
+		<select class="form-select" aria-label="Default select example" id="documentType">
+			<option selected>Select the document type</option>
+			<option value="1">XML</option>
+			<option value="2">JSON</option>
+		</select>
+
+	</div>
+	<div>
+		<button type="button" class="btn btn-outline-success" id="uploadButton" onclick="uploadFile()">Upload</button>
+	</div>
+</div>
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>
+				Id
+			<th>
+				Drink Name
+			</th>
+			<th>
+				Price
+			</th>
+			<th id="description" style="display:none">
+				Description
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<th>
+					@item.Id
+				</th>
+				<th>
+					@item.Name
+				</th>
+				<th>
+					$@item.Price.ToString("0.00")
+				</th>
+				<th class="descriptionData" style="display:none">
+					@Html.Raw(item?.Description?.Replace("\n", "<br>"))
+				</th>
+			</tr>
+		}
+	</tbody>
+</table>
+
+<script>
+	function uploadFile() {
+		var dropdown = document.getElementById("documentType");
+
+		if (!dropdown) {
+			console.error("Dropdown element not found.");
+			return;
+		}
+
+		var fileType = dropdown.value;
+
+		var formData = new FormData();
+		formData.append("fileType", fileType);
+
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", "/Home/Upload", true);
+
+		xhr.onload = function () {
+			if (xhr.status === 200) {
+				var response = JSON.parse(xhr.responseText);
+				alert(response.Message);
+			} else {
+				console.error("Error saving file. Server returned:", xhr.status, xhr.statusText);
+				alert("Error saving file. Server returned: " + xhr.statusText);
+			}
+		};
+
+		xhr.onerror = function () {
+			console.error("Request failed");
+			alert("Request failed");
+		};
+
+		console.log("Request payload:", formData);
+
+		try {
+			xhr.send(formData);
+		} catch (sendError) {
+			console.error("Error sending request:", sendError);
+		}
+	}
+
+	document.addEventListener("DOMContentLoaded", function () {
+		var checkbox = document.getElementById("showDescription");
+		var compositionColumn = document.getElementById("description");
+		var compositionDataElements = document.getElementsByClassName("descriptionData");
+
+		checkbox.addEventListener("change", function () {
+			var displayValue = checkbox.checked ? "table-cell" : "none";
+			compositionColumn.style.display = displayValue;
+
+			for (var i = 0; i < compositionDataElements.length; i++) {
+				compositionDataElements[i].style.display = displayValue;
+			}
+		});
+	});
+</script>
+

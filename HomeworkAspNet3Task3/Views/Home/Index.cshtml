@@ -1,0 +1,99 @@
+﻿@model List<HomeworkAspNet3Task3.Models.Shape>
+
+@{
+	ViewData["Title"] = "Home Page";
+}
+
+<div class="actions">
+	<div>
+		<select class="form-select" aria-label="Default select example" id="documentType">
+			<option selected>Select the document type</option>
+			<option value="1">XML</option>
+			<option value="2">JSON</option>
+		</select>
+	</div>
+	<div>
+		<button type="button" class="btn btn-outline-success" id="uploadButton" onclick="uploadFile()">Upload</button>
+	</div>
+</div>
+
+<table class="table table-bordered table-striped">
+	<thead>
+		<tr>
+			<th>
+				Id
+			<th>
+				Shape Name
+			</th>
+			<th>
+				Measure
+			</th>
+			<th>
+				Color
+			</th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var item in Model)
+		{
+			<tr>
+				<th>
+					@item.Id
+				</th>
+				<th>
+					@item.Name
+				</th>
+				<th>
+					@item.Measure
+				</th>
+				<th>
+					@item.Color
+				</th>
+			</tr>
+		}
+	</tbody>
+</table>
+
+<script>
+	function uploadFile() {
+		var dropdown = document.getElementById("documentType");
+
+		if (!dropdown) {
+			console.error("Dropdown element not found.");
+			return;
+		}
+
+		var fileType = dropdown.value;
+
+		var formData = new FormData();
+		formData.append("fileType", fileType);
+
+		var xhr = new XMLHttpRequest();
+		xhr.open("POST", "/Home/Upload", true);
+
+		xhr.onload = function () {
+			if (xhr.status === 200) {
+				var response = JSON.parse(xhr.responseText);
+				alert(response.Message);
+			} else {
+				console.error("Error saving file. Server returned:", xhr.status, xhr.statusText);
+				alert("Error saving file. Server returned: " + xhr.statusText);
+			}
+		};
+
+
+		xhr.onerror = function () {
+			console.error("Request failed");
+			alert("Request failed");
+		};
+
+		console.log("Request payload:", formData);
+
+		try {
+			xhr.send(formData);
+		} catch (sendError) {
+			console.error("Error sending request:", sendError);
+		}
+	}
+</script>
+

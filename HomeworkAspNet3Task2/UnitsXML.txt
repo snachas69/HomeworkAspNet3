@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfUnit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Unit xsi:type="Archer">
+    <Id>1</Id>
+    <Name>Legolas</Name>
+    <Stats>Attack: 85
+Defense: 60 
+Speed: 95 
+Unique Archer Skill: Eagle Eye (increases accuracy by 20%)</Stats>
+    <Level>30</Level>
+  </Unit>
+  <Unit xsi:type="Warrior">
+    <Id>2</Id>
+    <Name>Thor</Name>
+    <Stats>Attack: 90 
+Defense: 80 
+Speed: 70 
+Unique Warrior Skill: Mjolnir Strike (deals lightning damage on critical hits)</Stats>
+    <Level>35</Level>
+  </Unit>
+  <Unit xsi:type="Spearman">
+    <Id>3</Id>
+    <Name>Achilles</Name>
+    <Stats>Attack: 88 
+Defense: 75 
+Speed: 82 
+Unique Spearman Skill: Invincible Phalanx (increases defense against ranged attacks)</Stats>
+    <Level>32</Level>
+  </Unit>
+  <Unit xsi:type="Archer">
+    <Id>4</Id>
+    <Name>Sylvanas</Name>
+    <Stats>Attack: 80 
+Defense: 55 
+Speed: 92 
+Unique Archer Skill: Shadow Shot (deals bonus damage from stealth)</Stats>
+    <Level>28</Level>
+  </Unit>
+  <Unit xsi:type="Warrior">
+    <Id>5</Id>
+    <Name>Xena</Name>
+    <Stats>Attack: 92 
+Defense: 78 
+Speed: 68 
+Unique Warrior Skill: Chakram Throw (long-range spinning blade attack)</Stats>
+    <Level>33</Level>
+  </Unit>
+  <Unit xsi:type="Spearman">
+    <Id>6</Id>
+    <Name>Leonidas</Name>
+    <Stats>Attack: 89 
+Defense: 82 
+Speed: 75 
+Unique Spearman Skill: Spartan Phalanx (increases attack when surrounded by enemies)</Stats>
+    <Level>34</Level>
+  </Unit>
+  <Unit xsi:type="Archer">
+    <Id>7</Id>
+    <Name>Hawkeye</Name>
+    <Stats>Attack: 82 
+Defense: 58 
+Speed: 90 
+Unique Archer Skill: Trick Shot (bypasses enemy defenses)</Stats>
+    <Level>29</Level>
+  </Unit>
+  <Unit xsi:type="Warrior">
+    <Id>8</Id>
+    <Name>Diane</Name>
+    <Stats>Attack: 95 
+Defense: 85 
+Speed: 72 
+Unique Warrior Skill: Lasso of Truth (disarms and stuns enemies)</Stats>
+    <Level>36</Level>
+  </Unit>
+  <Unit xsi:type="Spearman">
+    <Id>9</Id>
+    <Name>Joan d'Arc</Name>
+    <Stats>Attack: 86 
+Defense: 73 
+Speed: 80 
+Unique Spearman Skill: Divine Intervention (heals nearby allies in battle)</Stats>
+    <Level>31</Level>
+  </Unit>
+  <Unit xsi:type="Archer">
+    <Id>10</Id>
+    <Name>Artemis</Name>
+    <Stats>Attack: 78 
+Defense: 52 
+Speed: 88 
+Unique Archer Skill: Moonlit Volley (fires a rapid barrage of arrows)</Stats>
+    <Level>27</Level>
+  </Unit>
+</ArrayOfUnit>
